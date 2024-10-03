@@ -9,11 +9,27 @@ body {
     line-height: 1.6;
     background-color: #1a1a2e;
     color: #fff;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
 }
 
 header {
     background-color: #162447;
     padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative; /* Added for smooth navigation effect */
+}
+
+header h1 {
+    font-family: 'Pacifico', cursive; /* Change this to your desired font */
+    font-size: 2.5rem;
+    color: #fff;
+    transition: transform 0.3s; /* Add smooth transition to the logo */
+}
+
+header h1:hover {
+    transform: translateY(-3px); /* Slight lift on hover */
 }
 
 nav ul {
@@ -38,7 +54,7 @@ nav a {
 nav a:hover {
     background-color: #1f4068;
     color: #fff;
-    transform: translateY(-2px);
+    transform: translateY(-2px); /* Smooth motion effect on hover */
 }
 
 .horizontal-section {
@@ -51,6 +67,17 @@ nav a:hover {
     align-items: center;
     overflow-x: auto;
     scroll-behavior: smooth;
+    padding: 20px; /* Add padding for better spacing */
+    scrollbar-width: thin; /* For Firefox */
+}
+
+.gallery-container::-webkit-scrollbar {
+    height: 10px; /* Adjust the height of the scrollbar */
+}
+
+.gallery-container::-webkit-scrollbar-thumb {
+    background-color: #1f4068; /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Rounded corners for the scrollbar thumb */
 }
 
 .cat-image {
