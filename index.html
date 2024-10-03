@@ -72,15 +72,28 @@
 
     <section id="gallery" class="horizontal-section">
         <h2>Gallery</h2>
-        <p>We've carefully chosen a collection of our top cat photos, each showcasing the unique charm and playful</p> 
-        <p>spirit of these adorable felines. Enjoy browsing through these delightful images that capture the essence of</p>
-        <p>what makes cats so special!</p>
+        <p>We've carefully chosen a collection of our top cat photos, each showcasing the unique charm and playful spirit of these adorable felines. Enjoy browsing through these delightful images that capture the essence of what makes cats so special!</p>
     </section>
 
     <section id="contact" class="horizontal-section">
         <h2>Contact</h2>
         <p>Feel free to share your cat photos with us in the Discord server.</p>
         <p>If you want your cute cat to be displayed on the website, feel free to contact me through Discord.</p>
+    </section>
+
+    <!-- Star Rating Section -->
+    <section id="rating" class="horizontal-section">
+        <h2>Rate Your Favorite Cat!</h2>
+        <div id="rating-container">
+            <div class="stars">
+                <span class="star" onclick="submitRating(1)">&#9733;</span>
+                <span class="star" onclick="submitRating(2)">&#9733;</span>
+                <span class="star" onclick="submitRating(3)">&#9733;</span>
+                <span class="star" onclick="submitRating(4)">&#9733;</span>
+                <span class="star" onclick="submitRating(5)">&#9733;</span>
+            </div>
+            <p id="average-rating">Average Rating: N/A</p>
+        </div>
     </section>
 
     <footer>
@@ -113,6 +126,44 @@
                 behavior: 'smooth'
             });
         });
+
+        // Add the star rating functionality here
+        async function submitRating(rating) {
+            try {
+                const response = await fetch('http://localhost:3000/ratings', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        user_id: 1, // Replace with actual user ID if available
+                        rating: rating,
+                    }),
+                });
+
+                const data = await response.json();
+                console.log(data.message); // Confirm rating submission
+                fetchAverageRating(); // Fetch average rating after submission
+            } catch (error) {
+                console.error('Error submitting rating:', error);
+            }
+        }
+
+        async function fetchAverageRating() {
+            try {
+                const response = await fetch('http://localhost:3000/ratings/average');
+                const data = await response.json();
+                const averageRating = data.averageRating ? data.averageRating.toFixed(1) : 'N/A';
+                document.getElementById('average-rating').innerText = `Average Rating: ${averageRating}`;
+            } catch (error) {
+                console.error('Error fetching average rating:', error);
+            }
+        }
+
+        // Call fetchAverageRating on page load to display the average rating
+        window.onload = function() {
+            fetchAverageRating();
+        };
     </script>
 </body>
 </html>
