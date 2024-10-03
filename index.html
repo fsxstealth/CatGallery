@@ -3,139 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A gallery of cute cat images.">
     <title>Cute Cat Gallery</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-    <img src="cat-website/logo1.webp" alt="Cute Cat Gallery Logo" style="width:150px;">
+
+<header>
+    <h1>Cute Cat Gallery</h1>
     <nav>
         <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
             <li><a href="#gallery">Gallery</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="https://discord.gg/nJrA6drUek" target="_blank">Join Us in Discord</a></li>
+            <li><a href="#rating">Rate Us</a></li>
+            <li><a href="#about">About</a></li>
         </ul>
     </nav>
 </header>
 
-    <section id="home" class="horizontal-section">
-        <div class="home-content">
-            <h2>Cute Cat Gallery</h2>
-            <div class="gallery-container">
-                <div class="cat-image" onclick="showModal('FSXStealth Cat', 'Known for its playful nature!')">
-                    <img src="cat1.avif" alt="FSXStealth Cat">
-                </div>
-                <div class="cat-image" onclick="showModal('Dani Car', 'A fluffy ball of joy! Ready to discover')">
-                    <img src="cat2.avif" alt="Dani Car">
-                </div>
-                <div class="cat-image" onclick="showModal('OOO1 Cat', 'The lazy cat')">
-                    <img src="cat3.avif" alt="OOO1 Cat">
-                </div>
-                <div class="cat-image" onclick="showModal('Sinister aka Bryan Cat', 'Just a watcher and a spy')">
-                    <img src="cat4.avif" alt="The Watcher Cat">
-                </div>
-                <div class="cat-image" onclick="showModal('RiRi Cat', 'Cute and playful')">
-                    <img src="cat5.avif" alt="RiRi Cat">
-                </div>
-                <div class="cat-image" onclick="showModal('LeeDaBee Cat', 'Looking mad fine!')">
-                    <img src="cat6.avif" alt="LeeDaBee Cat">
-                </div>
-                <div class="cat-image" onclick="showModal('Yen Cat', 'A nice and charming cat')">
-                    <img src="cat7.avif" alt="Yen Cat">
-                </div>
-                <div class="cat-image" onclick="showModal('Leon Cat', 'Got a good-looking cat?')">
-                    <img src="cat8.avif" alt="Leon Cat">
-                </div>
-                <div class="cat-image" onclick="showModal('SUS Cat', 'Just a funny Batman!')">
-                    <img src="dog8.avif" alt="SUS Cat">
-                </div>
-                <div class="cat-image" onclick="showModal('Wow Cat', 'Just Wow!')">
-                    <img src="cat10.avif" alt="Wow Cat">
-                </div>
-                <div class="cat-image" onclick="showModal('Wow Cat', 'Just Wow again!')">
-                    <img src="cat11.avif" alt="Wow Cat">
-                </div>    
-                <div class="cat-image" onclick="showModal('Wow Cat', 'Another Wow!')">
-                    <img src="cat12.avif" alt="Wow Cat">
-                </div>
-                <div class="cat-image" onclick="showModal('Wow Cat', 'Still Wow!')">
-                    <img src="cat13.avif" alt="Wow Cat">
-                </div>
-                <div class="cat-image" onclick="showModal('Wow Cat', 'So many wows!')">
-                    <img src="cat14.avif" alt="Wow Cat">
-                </div>        
-                <div class="cat-image" onclick="showModal('Wow Cat', 'Incredible looks!')">
-                    <img src="cat15.avif" alt="Wow Cat">
-                </div>
-                <div class="cat-image" onclick="showModal('Wow Cat', 'Fabulously fine!')">
-                    <img src="cat16.avif" alt="Wow Cat">
-                </div>    
-                <div class="cat-image" onclick="showModal('Wow Cat', 'Look at this fine cat!')">
-                    <img src="cat17.avif" alt="Wow Cat">
-                </div>
-                <div class="cat-image" onclick="showModal('Wow Cat', 'This cat is on fire!')">
-                    <img src="cat18.avif" alt="Wow Cat">
-                </div>
-                <div class="cat-image" onclick="showModal('Wow Cat', 'Just beautiful!')">
-                    <img src="cat19.avif" alt="Wow Cat">
-                </div>
-                <div class="arrow" id="next-arrow">&#10095;</div>
-            </div>
-        </div>
-    </section>
-
-    <section id="about" class="horizontal-section">
-        <h2>Welcome to Our Cute Cat Gallery!</h2>
-        <p>We are thrilled to have you here as we celebrate the adorable and playful nature of our feline friends.</p>
-        <p>Our gallery is dedicated to showcasing the charm, whimsy, and antics of cats from all walks of life.</p>
-        <p>Whether you're a devoted cat lover or simply someone who appreciates their delightful personalities,</p>
-        <p>you'll find something to brighten your day. Take your time to explore our curated collection of heartwarming</p>
-        <p>cat photos, each capturing a unique moment that highlights their playful spirit and endearing quirks.</p>
-        <p>We hope you enjoy browsing through the gallery and that it brings a smile to your face!</p>
-    </section>
-
+<main>
     <section id="gallery" class="horizontal-section">
-        <h2>Gallery</h2>
-        <p>We've carefully chosen a collection of our top cat photos, each showcasing the unique charm and playful</p> 
-        <p>spirit of these adorable felines. Enjoy browsing through these delightful images that capture the essence of</p>
-        <p>what makes cats so special!</p>
-    </section>
-
-    <section id="contact" class="horizontal-section">
-        <h2>Contact</h2>
-        <p>Feel free to share your cat photos with us in the Discord server.</p>
-        <p>If you want your cute cat to be displayed on the website, feel free to contact me through Discord.</p>
-    </section>
-
-    <!-- Star Rating Section -->
-    <section id="rating" class="horizontal-section">
-        <h2>Rate Our Site</h2>
-        <div id="rating-container">
-            <div class="stars" id="stars">
-                <span class="star" data-value="1">★</span>
-                <span class="star" data-value="2">★</span>
-                <span class="star" data-value="3">★</span>
-                <span class="star" data-value="4">★</span>
-                <span class="star" data-value="5">★</span>
+        <div class="gallery-container">
+            <div class="cat-image" onclick="openModal('cat1')">
+                <img src="cat1.jpg" alt="A cute cat" loading="lazy">
             </div>
-            <p id="average-rating">Average Rating: 0%</p>
-            <p id="thank-you-message" style="display: none;">Thank you for your rating! If you have a suggestion, feel free to contact the developer.</p>
+            <div class="cat-image" onclick="openModal('cat2')">
+                <img src="cat2.jpg" alt="Another cute cat" loading="lazy">
+            </div>
+            <!-- Add more cat images as needed -->
+        </div>
+        <div class="arrow" onclick="scrollLeft()">&#10094;</div>
+        <div class="arrow" onclick="scrollRight()">&#10095;</div>
+    </section>
+
+    <section id="rating" class="horizontal-section">
+        <div id="rating-container">
+            <h2>Rate Us</h2>
+            <div id="rating">
+                <div class="stars" onclick="submitRating(5)">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                </div>
+                <div id="average-rating"></div>
+            </div>
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2024 Cute Cat Gallery. Developed by FSXstealth. Idea by dani_blob.</p>
-    </footer>
-
-    <div id="modal" class="modal">
+    <div class="modal" id="catModal">
         <span class="close" onclick="closeModal()">&times;</span>
-        <h2 id="modal-title"></h2>
-        <p id="modal-text"></p>
-        <img id="modal-image" alt="Cat" style="max-width: 100%; height: auto;">
+        <p id="modal-description">Cat description goes here.</p>
     </div>
+</main>
 
-    <script src="script.js"></script>
+<footer>
+    <p>Developed by FSXstealth | © 2024 Cute Cat Gallery</p>
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
