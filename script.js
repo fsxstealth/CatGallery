@@ -1,7 +1,7 @@
-// Add these functions to your existing script.js
-
+// Submit the rating to the server
 async function submitRating(rating) {
     try {
+        // Replace 'http://localhost:3000/ratings' with your actual backend API URL if needed
         const response = await fetch('http://localhost:3000/ratings', {
             method: 'POST',
             headers: {
@@ -21,8 +21,10 @@ async function submitRating(rating) {
     }
 }
 
+// Fetch the average rating from the server
 async function fetchAverageRating() {
     try {
+        // Replace 'http://localhost:3000/ratings/average' with your actual backend API URL if needed
         const response = await fetch('http://localhost:3000/ratings/average');
         const data = await response.json();
         const averageRating = data.averageRating ? data.averageRating.toFixed(1) : 'N/A';
@@ -36,3 +38,21 @@ async function fetchAverageRating() {
 window.onload = function() {
     fetchAverageRating();
 };
+
+// Add event listeners to the star rating system
+document.querySelectorAll('.star').forEach(star => {
+    star.addEventListener('click', function() {
+        const rating = this.getAttribute('data-value');
+        submitRating(rating); // Submit the selected rating
+        displayThankYouMessage(); // Show thank you message after rating
+    });
+});
+
+// Display a thank you message after rating
+function displayThankYouMessage() {
+    const thankYouMessage = document.getElementById('thank-you-message');
+    thankYouMessage.style.display = 'block';
+    setTimeout(() => {
+        thankYouMessage.style.display = 'none';
+    }, 3000); // Hide message after 3 seconds
+}
