@@ -90,7 +90,7 @@ footer {
     padding: 20px;
     background-color: #162447; /* Footer background color */
     position: relative;
-    margin-top: 20px; /* Adds space above footer */
+    margin-top: 0px; /* Adds space above footer */
 }
 
 footer p {
