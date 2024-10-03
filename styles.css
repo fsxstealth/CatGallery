@@ -123,39 +123,6 @@ footer p {
     margin: 100px 0; /* Center the text */
 }
 
-/* Star Rating Styles */
-#rating {
-    margin-top: 40px; /* Space above the rating section */
-}
-
-#rating-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.stars {
-    display: flex;
-    justify-content: center;
-    font-size: 30px; /* Size of the stars */
-}
-
-.star {
-    color: #f1c40f; /* Color of the stars */
-    cursor: pointer;
-    transition: transform 0.3s;
-}
-
-.star:hover {
-    transform: scale(1.2); /* Slightly enlarge the star on hover */
-}
-
-#average-rating {
-    margin-top: 10px; /* Space between stars and average rating text */
-    font-size: 18px; /* Average rating text size */
-}
-
-/* Media Queries */
 @media (max-width: 768px) {
     nav ul {
         flex-direction: column;
@@ -172,8 +139,36 @@ footer p {
     footer p {
         font-size: 12px; /* Smaller footer text on mobile */
     }
+}
 
-    #average-rating {
-        font-size: 16px; /* Smaller average rating text on mobile */
-    }
+/* Star Rating Styles */
+#rating {
+    padding: 20px;
+    background-color: #162447;
+    color: #fff;
+}
+
+#rating-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.stars {
+    font-size: 40px; /* Size of the stars */
+    cursor: pointer;
+}
+
+.star {
+    color: #fff; /* Default star color */
+    margin: 0 5px; /* Spacing between stars */
+    transition: color 0.2s;
+}
+
+.star:hover {
+    color: #f1c40f; /* Highlight color on hover */
+}
+
+#thank-you-message {
+    margin-top: 10px; /* Spacing above the thank you message */
 }
