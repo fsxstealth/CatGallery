@@ -5,6 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cute Cat Gallery</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1c1c1c;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            padding: 10px 20px;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: flex-start;
+        }
+        nav ul li {
+            margin-right: 20px;
+        }
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .horizontal-section {
+            padding: 20px;
+        }
+        .gallery-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: auto;
+        }
+        .cat-image {
+            margin: 10px;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .cat-image:hover {
+            transform: scale(1.05);
+        }
+        .arrow {
+            font-size: 30px;
+            cursor: pointer;
+            color: #fff;
+            margin: 10px;
+        }
+        #modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            z-index: 10;
+            justify-content: center;
+            align-items: center;
+        }
+        #modal-content {
+            color: #fff;
+            text-align: center;
+        }
+        footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #333;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -22,7 +95,7 @@
     <section id="home" class="horizontal-section">
         <div class="home-content">
             <h2>Cute Cat Gallery</h2>
-            <div class="gallery-container">
+            <div class="gallery-container" id="gallery">
                 <div class="cat-image" onclick="showModal('FSXStealth Cat', 'Known for its playful nature!')">
                     <img src="cat1.avif" alt="FSXStealth Cat">
                 </div>
@@ -80,8 +153,9 @@
                 <div class="cat-image" onclick="showModal('Wow Cat', 'Just beautiful!')">
                     <img src="cat19.avif" alt="Wow Cat">
                 </div>
-                <div class="arrow" id="next-arrow">&#10095;</div>
             </div>
+            <div class="arrow" id="left-arrow" onclick="moveGallery(-1)">&#10094;</div>
+            <div class="arrow" id="right-arrow" onclick="moveGallery(1)">&#10095;</div>
         </div>
     </section>
 
@@ -108,33 +182,43 @@
         <p>If you want your cute cat to be displayed on the website, feel free to contact me through Discord.</p>
     </section>
 
-    <!-- Star Rating Section -->
-    <section id="rating" class="horizontal-section">
-        <h2>Rate Our Site</h2>
-        <div id="rating-container">
-            <div class="stars" id="stars">
-                <span class="star" data-value="1">★</span>
-                <span class="star" data-value="2">★</span>
-                <span class="star" data-value="3">★</span>
-                <span class="star" data-value="4">★</span>
-                <span class="star" data-value="5">★</span>
-            </div>
-            <p id="average-rating">Average Rating: 0%</p>
-            <p id="thank-you-message" style="display: none;">Thank you for your rating! If you have a suggestion, feel free to contact the developer.</p>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2024 Cute Cat Gallery. Developed by FSXstealth. Idea by dani_blob.</p>
-    </footer>
-
-    <div id="modal" class="modal">
-        <span class="close" onclick="closeModal()">&times;</span>
-        <h2 id="modal-title"></h2>
-        <p id="modal-text"></p>
-        <img id="modal-image" alt="Cat" style="max-width: 100%; height: auto;">
+    <!-- Modal for image descriptions -->
+    <div id="modal" onclick="this.style.display='none'">
+        <div id="modal-content"></div>
     </div>
 
-    <script src="script.js"></script>
+    <footer>
+        <p>&copy; 2024 Cute Cat Gallery</p>
+        <p>Developed and created by FSXstealth. Idea by dani_blob.</p>
+    </footer>
+
+    <script>
+        function showModal(catName, catDescription) {
+            const modal = document.getElementById('modal');
+            const modalContent = document.getElementById('modal-content');
+            modalContent.innerHTML = `<h2>${catName}</h2><p>${catDescription}</p>`;
+            modal.style.display = 'flex';
+        }
+
+        let currentPosition = 0; // Current position of the gallery
+        const galleryContainer = document.getElementById('gallery');
+        const totalImages = galleryContainer.children.length; // Total number of images
+
+        function moveGallery(direction) {
+            currentPosition += direction;
+            if (currentPosition < 0) {
+                currentPosition = totalImages - 1; // Loop to the last image
+            } else if (currentPosition >= totalImages) {
+                currentPosition = 0; // Loop to the first image
+            }
+            updateGalleryPosition();
+        }
+
+        function updateGalleryPosition() {
+            const offset = -currentPosition * (galleryContainer.children[0].offsetWidth + 20); // 20 is the margin
+            galleryContainer.style.transform = `translateX(${offset}px)`;
+        }
+    </script>
 </body>
 </html>
+
