@@ -88,13 +88,16 @@ nav a:hover {
 footer {
     text-align: center;
     padding: 20px;
-    background-color: #162447;
+    background-color: #162447; /* Footer background color */
     position: relative;
+    margin-top: 20px; /* Adds space above footer */
 }
 
 footer p {
     margin: 0;
     font-size: 14px;
+    color: #ffcc00; /* Change to desired color for footer text */
+    font-weight: bold; /* Make footer text bold */
 }
 
 .modal {
