@@ -1,58 +1,38 @@
-document.addEventListener('DOMContentLoaded', function () {
-    const stars = document.querySelectorAll('.star');
-    const averageRatingText = document.getElementById('average-rating');
-    const thankYouMessage = document.getElementById('thank-you-message');
-    let totalRating = 0;
-    let ratingCount = 0;
+// Add these functions to your existing script.js
 
-    // Event listener for star ratings
-    stars.forEach(star => {
-        star.addEventListener('click', function () {
-            const ratingValue = this.getAttribute('data-value');
-            totalRating += parseInt(ratingValue);
-            ratingCount += 1;
-
-            const averageRating = (totalRating / ratingCount) * 20; // Percentage calculation
-            averageRatingText.textContent = Average Rating: ${averageRating.toFixed(2)}%;
-            thankYouMessage.style.display = 'block'; // Show thank you message
-
-            // Highlight stars based on the current rating
-            highlightStars(ratingValue);
+async function submitRating(rating) {
+    try {
+        const response = await fetch('http://localhost:3000/ratings', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                user_id: 1, // Replace with actual user ID if available
+                rating: rating,
+            }),
         });
-    });
 
-    function highlightStars(rating) {
-        stars.forEach(star => {
-            star.style.color = star.getAttribute('data-value') <= rating ? '#f1c40f' : '#fff';
-        });
+        const data = await response.json();
+        console.log(data.message); // Confirm rating submission
+        fetchAverageRating(); // Fetch average rating after submission
+    } catch (error) {
+        console.error('Error submitting rating:', error);
     }
+}
 
-    // Modal functionality
-    function showModal(text) {
-        document.getElementById('modal-text').innerText = text;
-        document.getElementById('modal').style.display = 'block';
+async function fetchAverageRating() {
+    try {
+        const response = await fetch('http://localhost:3000/ratings/average');
+        const data = await response.json();
+        const averageRating = data.averageRating ? data.averageRating.toFixed(1) : 'N/A';
+        document.getElementById('average-rating').innerText = `Average Rating: ${averageRating}`;
+    } catch (error) {
+        console.error('Error fetching average rating:', error);
     }
-    function closeModal() {
-        document.getElementById('modal').style.display = 'none';
-    }
-    
-    // Close modal when clicking outside of the content
-    window.onclick = function(event) {
-        const modal = document.getElementById('modal');
-        if (event.target === modal) {
-            closeModal();
-        }
-    };
-    
-    // Arrow navigation functionality
-    const nextArrow = document.getElementById('next-arrow');
-    const galleryContainer = document.querySelector('.gallery-container');
+}
 
-    nextArrow.addEventListener('click', () => {
-        galleryContainer.scrollBy({
-            top: 0,
-            left: 200, // Adjust this value based on the image width
-            behavior: 'smooth'
-        });
-    });
-});
+// Call fetchAverageRating on page load to display the average rating
+window.onload = function() {
+    fetchAverageRating();
+};
