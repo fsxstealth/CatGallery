@@ -1,3 +1,15 @@
+// Scroll functionality for arrows
+const scrollContainer = document.querySelector('.scroll-container'); // Make sure this matches your actual container class
+const scrollAmount = 300; // Change this value for scroll speed
+
+document.querySelector('.arrow-left').addEventListener('click', () => {
+    scrollContainer.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+});
+
+document.querySelector('.arrow-right').addEventListener('click', () => {
+    scrollContainer.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+});
+
 // Submit the rating to the server
 async function submitRating(rating) {
     try {
