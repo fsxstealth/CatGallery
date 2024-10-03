@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function () {
             ratingCount += 1;
 
             const averageRating = (totalRating / ratingCount) * 20; // Percentage calculation
-            averageRatingText.textContent = `Average Rating: ${averageRating.toFixed(2)}%`;
+            averageRatingText.textContent = Average Rating: ${averageRating.toFixed(2)}%;
             thankYouMessage.style.display = 'block'; // Show thank you message
 
             // Highlight stars based on the current rating
