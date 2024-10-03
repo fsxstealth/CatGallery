@@ -5,11 +5,12 @@ document.addEventListener('DOMContentLoaded', function () {
     let totalRating = 0;
     let ratingCount = 0;
 
-    stars.forEach((star) => {
+    // Event listener for star ratings
+    stars.forEach(star => {
         star.addEventListener('click', function () {
-            const ratingValue = parseInt(this.getAttribute('data-value'));
-            totalRating += ratingValue;
-            ratingCount++;
+            const ratingValue = this.getAttribute('data-value');
+            totalRating += parseInt(ratingValue);
+            ratingCount += 1;
 
             const averageRating = (totalRating / ratingCount) * 20; // Percentage calculation
             averageRatingText.textContent = `Average Rating: ${averageRating.toFixed(2)}%`;
@@ -21,20 +22,20 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
     function highlightStars(rating) {
-        stars.forEach((star) => {
+        stars.forEach(star => {
             star.style.color = star.getAttribute('data-value') <= rating ? '#f1c40f' : '#fff';
         });
     }
 
+    // Modal functionality
     function showModal(text) {
         document.getElementById('modal-text').innerText = text;
         document.getElementById('modal').style.display = 'block';
     }
-
     function closeModal() {
         document.getElementById('modal').style.display = 'none';
     }
-
+    
     // Close modal when clicking outside of the content
     window.onclick = function(event) {
         const modal = document.getElementById('modal');
@@ -42,11 +43,11 @@ document.addEventListener('DOMContentLoaded', function () {
             closeModal();
         }
     };
-
+    
     // Arrow navigation functionality
     const nextArrow = document.getElementById('next-arrow');
     const galleryContainer = document.querySelector('.gallery-container');
-    
+
     nextArrow.addEventListener('click', () => {
         galleryContainer.scrollBy({
             top: 0,
